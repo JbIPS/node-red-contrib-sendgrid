@@ -18,7 +18,7 @@ module.exports = function (RED) {
                 cc: (msg.cc || '').split(/[,; ]+/g),
                 bcc: (msg.bcc || '').split(/[,; ]+/g),
                 subject: msg.topic || msg.title || 'Message from Node-RED',
-                templateId: config.templateId || msg.templateId,
+                templateId: msg.templateId || config.templateId,
                 dynamic_template_data: (data => typeof data === 'object' ? data : JSON.parse(data))(config.templateData || msg.templateData || '{}'),
             };
             if(!config.templateId) {
